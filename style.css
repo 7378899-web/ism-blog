@@ -1,0 +1,225 @@
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #00ffcc;
+  margin: 0;
+}
+
+.mode-btn {
+  background: transparent;
+  border: 1px solid #00ffcc;
+  color: #00ffcc;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.mode-btn:hover {
+  background: #00ffcc;
+  color: #0f172a;
+}
+
+body.reader-mode .post-form,
+body.reader-mode .edit-btn,
+body.reader-mode .delete-btn {
+  display: none;
+}
+
+.post-form {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-form input,
+.post-form textarea,
+.search-input {
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.post-form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.post-form button {
+  background: #00ffcc;
+  color: #0f172a;
+  border: none;
+  padding: 12px 28px;
+  align-self: flex-start;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.post-form button:hover {
+  background: #00d9ad;
+}
+
+.post-form button:active {
+  transform: scale(0.97);
+}
+
+.search-input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.ent-card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  border-left: 4px solid #00ffcc;
+}
+
+.ent-card h2 {
+  margin-top: 0;
+  margin-bottom: 6px;
+  color: #00ffcc;
+}
+
+.post-date {
+  display: block;
+  color: #94a3b8;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.like-btn {
+  background: #0f172a;
+  color: #f8fafc;
+  border: 1px solid #334155;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.like-btn.liked {
+  border-color: #00ffcc;
+  color: #00ffcc;
+}
+
+.edit-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.edit-btn:hover {
+  background: #2563eb;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+/* Выбор тега в форме */
+.tag-select {
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Панель фильтрации по тегам */
+.tags-filter {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: #1e293b;
+  color: #cbd5e1;
+  border: 1px solid #334155;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: #00ffcc;
+  color: #00ffcc;
+}
+
+.filter-btn.active {
+  background: #00ffcc;
+  color: #0f172a;
+  border-color: #00ffcc;
+  font-weight: bold;
+}
+
+/* Бейдж тега внутри карточки поста */
+.post-tag-badge {
+  display: inline-block;
+  background: rgba(0, 255, 204, 0.12);
+  color: #00ffcc;
+  border: 1px solid rgba(0, 255, 204, 0.3);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}

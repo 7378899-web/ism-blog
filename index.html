@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Блог Игоря</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-bar">
+        <h1>Мой блог</h1>
+        <button type="button" class="mode-btn" id="toggleModeBtn">
+          Режим читателя
+        </button>
+      </div>
+
+      <section class="post-form">
+        <h2 id="formHeading">Панель администратора: Новый пост</h2>
+        <input type="text" id="postTitle" placeholder="Заголовок статьи..." />
+        <select id="postTag" class="tag-select">
+          <option value="Хобби">🎨 Хобби</option>
+          <option value="Учёба">📚 Учёба</option>
+          <option value="Игры">⚽ Игры</option>
+          <option value="Жизнь">⚡ Жизнь</option>
+        </select>
+        <textarea id="postText" placeholder="Текст вашей статьи..."></textarea>
+        <button type="button" id="publishBtn">Опубликовать</button>
+      </section>
+
+      <h2>Записи в блоге</h2>
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Поиск по заголовку или тексту..."
+      />
+      <div class="tags-filter" id="tagsFilter">
+        <button type="button" class="filter-btn active" data-tag="Все">
+          Все
+        </button>
+        <button type="button" class="filter-btn" data-tag="Хобби">
+          🎨 Хобби
+        </button>
+        <button type="button" class="filter-btn" data-tag="Учёба">
+          📚 Учёба
+        </button>
+        <button type="button" class="filter-btn" data-tag="Игры">
+          ⚽ Игры
+        </button>
+        <button type="button" class="filter-btn" data-tag="Жизнь">
+          ⚡ Жизнь
+        </button>
+      </div>
+
+      <main class="blog-posts" id="feedContainer"></main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
