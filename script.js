@@ -1,6 +1,6 @@
 
 
-import { initializeApp } from "https://gstatic.com";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {
   getFirestore,
   collection,
@@ -11,7 +11,7 @@ import {
   deleteDoc,
   query,
   orderBy,
-} from "https://gstatic.com";
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC2j2b0-XvQTA_YAxvjDlMlewOIgJvAmMU",
