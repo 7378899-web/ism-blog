@@ -13,17 +13,16 @@ import {
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
-import { 
-  getAuth, 
-  GoogleAuthProvider, 
-  signInWithPopup, 
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
-  signOut, 
-  onAuthStateChanged 
+  signOut,
+  onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyC2j2b0-XvQTA_YAxvjDlMlewOIgJvAmMU",
@@ -80,14 +79,14 @@ searchInput.addEventListener("input", renderPosts);
 
 tagsFilter.addEventListener("click", (event) => {
   if (!event.target.classList.contains("filter-btn")) return;
-document
+  document
     .querySelectorAll(".filter-btn")
     .forEach((btn) => btn.classList.remove("active"));
   event.target.classList.add("active");
 
   activeTag = event.target.dataset.tag;
   renderPosts();
-})
+});
 
 function renderPosts() {
   feedContainer.innerHTML = "";
@@ -256,7 +255,6 @@ feedContainer.addEventListener("click", async (event) => {
 // Загружаем посты из сети при открытии страницы
 loadPosts();
 
-
 // --- АВТОРИЗАЦИЯ И МОДАЛЬНОЕ ОКНО ---
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -275,41 +273,45 @@ const passInput = document.getElementById("auth-password");
 const nameInput = document.getElementById("reg-name");
 
 // Открытие и закрытие окна
-openModalBtn.addEventListener("click", () => authModal.style.display = "flex");
-closeModalBtn.addEventListener("click", () => authModal.style.display = "none");
+openModalBtn.addEventListener(
+  "click",
+  () => (authModal.style.display = "flex"),
+);
+closeModalBtn.addEventListener(
+  "click",
+  () => (authModal.style.display = "none"),
+);
 window.addEventListener("click", (e) => {
   if (e.target === authModal) authModal.style.display = "none";
 });
 
-
-
 // 1. Словарь понятных ошибок Firebase Auth
 function getAuthErrorMessage(errorCode) {
   switch (errorCode) {
-    case 'auth/network-request-failed':
-      return 'Ошибка сети. Проверьте интернет или настройки VPN.';
-    case 'auth/email-already-in-use':
-      return 'Этот email уже занят. Попробуйте войти.';
-    case 'auth/invalid-email':
-      return 'Некорректный формат почты.';
-    case 'auth/weak-password':
-      return 'Слишком простой пароль (нужно от 6 символов).';
-    case 'auth/invalid-credential':
-    case 'auth/user-not-found':
-    case 'auth/wrong-password':
-      return 'Неверная почта или пароль.';
-    case 'auth/too-many-requests':
-      return 'Слишком много попыток. Попробуйте позже.';
-    case 'auth/popup-closed-by-user':
-      return 'Окно входа через Google было закрыто.';
-    case 'auth/popup-blocked':
-      return 'Браузер заблокировал всплывающее окно. Разрешите их для сайта.';
-    case 'auth/cancelled-popup-request':
-      return 'Запрос на вход отменён. Нажмите кнопку ещё раз.';
-    case 'auth/unauthorized-domain':
-      return 'Этот домен не добавлен в разрешённые в настройках Firebase.';
+    case "auth/network-request-failed":
+      return "Ошибка сети. Проверьте интернет или настройки VPN.";
+    case "auth/email-already-in-use":
+      return "Этот email уже занят. Попробуйте войти.";
+    case "auth/invalid-email":
+      return "Некорректный формат почты.";
+    case "auth/weak-password":
+      return "Слишком простой пароль (нужно от 6 символов).";
+    case "auth/invalid-credential":
+    case "auth/user-not-found":
+    case "auth/wrong-password":
+      return "Неверная почта или пароль.";
+    case "auth/too-many-requests":
+      return "Слишком много попыток. Попробуйте позже.";
+    case "auth/popup-closed-by-user":
+      return "Окно входа через Google было закрыто.";
+    case "auth/popup-blocked":
+      return "Браузер заблокировал всплывающее окно. Разрешите их для сайта.";
+    case "auth/cancelled-popup-request":
+      return "Запрос на вход отменён. Нажмите кнопку ещё раз.";
+    case "auth/unauthorized-domain":
+      return "Этот домен не добавлен в разрешённые в настройках Firebase.";
     default:
-      return 'Ошибка: ' + errorCode;
+      return "Ошибка: " + errorCode;
   }
 }
 
@@ -338,7 +340,11 @@ registerBtn.addEventListener("click", () => {
     const pass = passInput.value;
     const name = nameInput.value.trim() || email.split("@")[0];
 
-    const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      pass,
+    );
     await updateProfile(userCredential.user, { displayName: name });
     userName.textContent = name;
   });
@@ -348,7 +354,11 @@ registerBtn.addEventListener("click", () => {
 const loginBtn = document.getElementById("email-login-btn");
 loginBtn.addEventListener("click", () => {
   runAuthAction(loginBtn, "Вход...", async () => {
-    await signInWithEmailAndPassword(auth, emailInput.value.trim(), passInput.value);
+    await signInWithEmailAndPassword(
+      auth,
+      emailInput.value.trim(),
+      passInput.value,
+    );
   });
 });
 
@@ -360,35 +370,35 @@ googleBtn.addEventListener("click", () => {
   });
 });
 
-
-
 // Выход
-document.getElementById("logout-btn").addEventListener("click", () => signOut(auth));
-
-
+document
+  .getElementById("logout-btn")
+  .addEventListener("click", () => signOut(auth));
 
 // Список UID администраторов (сюда можно добавить второго админа через запятую)
-const ADMIN_UIDS = [
-  "DOUzmm6N1gMYFoIETQR7qSf3coz2"
-];
+const ADMIN_UIDS = ["DOUzmm6N1gMYFoIETQR7qSf3coz2"];
 const postForm = document.querySelector(".post-form");
 
 // Проверка статуса входа
 onAuthStateChanged(auth, (user) => {
-  const authBox = document.getElementById("auth-section") || document.querySelector(".auth-section");
- if (user) {
-  if (authBox) authBox.style.display = "none";
-  if (authModal) authModal.style.display = "none";
-  if (openModalBtn) openModalBtn.style.display = "none";
-  if (userInfo) userInfo.style.display = "flex";
-  if (userName) userName.textContent = user.displayName || user.email;
-  if (userAvatar) userAvatar.src = user.photoURL || `https://ui-avatars.com{encodeURIComponent(user.displayName || user.email)}`;
-     // Показываем форму создания постов только администраторам из списка
-  if (postForm) {
-   postForm.style.display = ADMIN_UIDS.includes(user.uid) ? "block" : "none";
-  }
-  }
-   else {
+  const authBox =
+    document.getElementById("auth-section") ||
+    document.querySelector(".auth-section");
+  if (user) {
+    if (authBox) authBox.style.display = "none";
+    if (authModal) authModal.style.display = "none";
+    if (openModalBtn) openModalBtn.style.display = "none";
+    if (userInfo) userInfo.style.display = "flex";
+    if (userName) userName.textContent = user.displayName || user.email;
+    if (userAvatar)
+      userAvatar.src =
+        user.photoURL ||
+        `https://ui-avatars.com{encodeURIComponent(user.displayName || user.email)}`;
+    // Показываем форму создания постов только администраторам из списка
+    if (postForm) {
+      postForm.style.display = ADMIN_UIDS.includes(user.uid) ? "block" : "none";
+    }
+  } else {
     if (authBox) authBox.style.display = "block";
     openModalBtn.style.display = "block";
     userInfo.style.display = "none";
@@ -404,10 +414,10 @@ onAuthStateChanged(auth, (user) => {
 const navBtns = document.querySelectorAll(".nav-btn");
 const tabContents = document.querySelectorAll(".tab-content");
 
-navBtns.forEach(btn => {
+navBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    navBtns.forEach(b => b.classList.remove("active"));
-    tabContents.forEach(t => t.style.display = "none");
+    navBtns.forEach((b) => b.classList.remove("active"));
+    tabContents.forEach((t) => (t.style.display = "none"));
 
     btn.classList.add("active");
     const targetTab = document.getElementById(`tab-${btn.dataset.tab}`);
@@ -457,44 +467,43 @@ function compressImage(file, maxWidth = 800, quality = 0.75) {
   });
 }
 
-
 if (addProjBtn) {
   addProjBtn.addEventListener("click", async () => {
-const title = document.getElementById("proj-title").value.trim();
-const imgUrl = document.getElementById("proj-img").value.trim();
-const fileInput = document.getElementById("proj-file");
-const rawLink = document.getElementById("proj-link").value.trim();
-const link = rawLink && !rawLink.startsWith("http") ? `https://${rawLink}` : rawLink;
-const desc = document.getElementById("proj-desc").value.trim();
+    const title = document.getElementById("proj-title").value.trim();
+    const imgUrl = document.getElementById("proj-img").value.trim();
+    const fileInput = document.getElementById("proj-file");
+    const rawLink = document.getElementById("proj-link").value.trim();
+    const link =
+      rawLink && !rawLink.startsWith("http") ? `https://${rawLink}` : rawLink;
+    const desc = document.getElementById("proj-desc").value.trim();
 
-if (!title || !desc) return alert("Заполните название и описание проекта!");
+    if (!title || !desc) return alert("Заполните название и описание проекта!");
 
-let finalImg = imgUrl || "https://placehold.co";
+    let finalImg = imgUrl || "https://placehold.co";
 
-if (fileInput && fileInput.files && fileInput.files[0]) {
-  try {
-    finalImg = await compressImage(fileInput.files[0]);
-  } catch (e) {
-    return alert("Не удалось обработать изображение");
-  }
-}
+    if (fileInput && fileInput.files && fileInput.files[0]) {
+      try {
+        finalImg = await compressImage(fileInput.files[0]);
+      } catch (e) {
+        return alert("Не удалось обработать изображение");
+      }
+    }
 
-await addDoc(collection(db, "portfolio"), {
-  title,
-  img: finalImg,
-  link,
-  desc,
-  createdAt: serverTimestamp()
-});
+    await addDoc(collection(db, "portfolio"), {
+      title,
+      img: finalImg,
+      link,
+      desc,
+      createdAt: serverTimestamp(),
+    });
 
-document.getElementById("proj-title").value = "";
-document.getElementById("proj-img").value = "";
-if (fileInput) fileInput.value = "";
-document.getElementById("proj-link").value = "";
-document.getElementById("proj-desc").value = "";
-loadPortfolio(true);
-  })
-
+    document.getElementById("proj-title").value = "";
+    document.getElementById("proj-img").value = "";
+    if (fileInput) fileInput.value = "";
+    document.getElementById("proj-link").value = "";
+    document.getElementById("proj-desc").value = "";
+    loadPortfolio(true);
+  });
 }
 
 // Загрузка и отрисовка карточек портфолио
@@ -524,7 +533,7 @@ async function loadPortfolio(isAdmin = false) {
 
   // Удаление проекта для админа
   if (isAdmin) {
-    document.querySelectorAll(".delete-proj-btn").forEach(btn => {
+    document.querySelectorAll(".delete-proj-btn").forEach((btn) => {
       btn.addEventListener("click", async () => {
         if (confirm("Удалить этот проект из портфолио?")) {
           await deleteDoc(doc(db, "portfolio", btn.dataset.id));
@@ -580,7 +589,7 @@ if (chatMessages) {
 
       const safeText = document.createElement("div");
       safeText.textContent = msg.text; // Защита от HTML-инъекций
-        msgDiv.innerHTML = `
+      msgDiv.innerHTML = `
         <div class="chat-msg-header">
           <span>${msg.author || "Пользователь"}</span>
           ${isChatAdmin || isOwn ? `<button class="chat-del-btn" data-id="${docSnap.id}">Удалить</button>` : ""}
@@ -617,16 +626,35 @@ async function sendChatMessage() {
     text,
     author: authorName,
     uid: currentChatUser.uid,
-    createdAt: serverTimestamp()
+    createdAt: serverTimestamp(),
   });
 }
 if (sendChatBtn) sendChatBtn.addEventListener("click", sendChatBtn);
 if (chatInput) {
   chatInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") sendChatMessage();
-  } )
+  });
 }
 
+// Переключение между вкладками Вход и Регистрация
+const authTabs = document.querySelectorAll(".auth-tab");
+const regNameInput = document.getElementById("reg-name");
+const emailLoginBtn = document.getElementById("email-login-btn");
+const emailRegBtn = document.getElementById("email-reg-btn");
+authTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    authTabs.forEach((t) => t.classList.remove("active"));
+    tab.classList.add("active");
+    if (authError) authError.textContent = "";
 
-
-
+    if (tab.dataset.mode === "register") {
+      regNameInput.classList.remove("hidden");
+      emailLoginBtn.classList.add("hidden");
+      emailRegBtn.classList.remove("hidden");
+    } else {
+      regNameInput.classList.add("hidden");
+      emailLoginBtn.classList.remove("hidden");
+      emailRegBtn.classList.add("hidden");
+    }
+  });
+});

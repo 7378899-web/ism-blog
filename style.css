@@ -715,3 +715,168 @@ h1 {
   border-color: #ef4444;
   color: #fca5a5;
 }
+
+/* Удобное модальное окно входа и регистрации */
+.modal-content {
+  border-radius: 16px;
+  padding: 28px 24px;
+  border: 1px solid #2e3632;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 6px;
+  background-color: #151917;
+  padding: 4px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  margin-right: 28px;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 8px 12px;
+  margin: 0;
+  background: transparent;
+  color: #8c9690;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.auth-tab.active {
+  background-color: #28302c;
+  color: #ffffff;
+}
+
+.modal-content input {
+  border-radius: 10px;
+  padding: 12px 14px;
+  border: 1px solid #2e3632;
+  transition: border-color 0.2s;
+}
+
+.modal-content input:focus {
+  outline: none;
+  border-color: #1ed760;
+}
+
+#email-login-btn,
+#email-reg-btn,
+#google-login-btn {
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+#email-login-btn:hover,
+#email-reg-btn:hover,
+#google-login-btn:hover {
+  opacity: 0.9;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  color: #6e7872;
+  font-size: 13px;
+  margin: 14px 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #2e3632;
+}
+
+.auth-divider span {
+  padding: 0 10px;
+}
+
+#auth-error {
+  color: #ff5c5c;
+  font-size: 13px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Бонус: чтобы длинные слова без пробелов в постах не ломали ширину экрана */
+#tab-blog p,
+.post-content {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Спокойный стиль кнопок с мягкой подсветкой при наведении */
+#email-login-btn,
+#email-reg-btn {
+  background-color: #1f4d36 !important; /* спокойный глубокий зелёный */
+  color: #4ade80 !important; /* мягкий светло-зелёный текст */
+  border: 1px solid #2e7d54 !important; /* аккуратная тонкая рамка */
+  transition: all 0.25s ease;
+}
+
+/* Мягкая подсветка при наведении курсора */
+#email-login-btn:hover,
+#email-reg-btn:hover {
+  background-color: #276345 !important;
+  color: #ffffff !important;
+  border-color: #34d399 !important;
+  box-shadow: 0 0 15px rgba(52, 211, 153, 0.25); /* лёгкое неоновое свечение */
+  opacity: 1 !important;
+}
+
+/* Кнопка Google в тон окну с лёгким свечением при наведении */
+#google-login-btn {
+  background-color: #1c211e !important;
+  color: #e2e8f0 !important;
+  border: 1px solid #2e3632 !important;
+  transition: all 0.25s ease;
+}
+
+#google-login-btn:hover {
+  background-color: #252c28 !important;
+  border-color: #4b5751 !important;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+  opacity: 1 !important;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  background: transparent !important;
+  padding: 0 !important;
+  margin-bottom: 18px;
+}
+
+.modal-content .auth-tabs button.auth-tab {
+  flex: 1;
+  background: #232926 !important;
+  background-color: #232926 !important;
+  color: #a0aba5 !important;
+  border: 1px solid #2e3632 !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease;
+}
+
+.modal-content .auth-tabs button.auth-tab:hover {
+  background: #2a312e !important;
+  color: #ffffff !important;
+}
+
+.modal-content .auth-tabs button.auth-tab.active {
+  background: #232926 !important;
+  background-color: #232926 !important;
+  color: #ffffff !important;
+  border: 1px solid #2e7d54 !important;
+}
