@@ -53,13 +53,15 @@
       <div id="tab-blog" class="tab-content">
         <section class="post-form" id="adminPanel" style="display: none">
           <h2 id="formHeading">Панель администратора: добавить запись</h2>
-          <input type="text" id="postTitle" placeholder="Заголовок записи" />
-          <select id="postTag" class="tag-select">
-            <option value="Хобби">🎨 Хобби</option>
-            <option value="Учёба">📚 Учёба</option>
-            <option value="Игры">🎮 Игры</option>
-            <option value="Жизнь">⚡ Жизнь</option>
-          </select>
+          <div class="form-top-row">
+            <input type="text" id="postTitle" placeholder="Заголовок записи" />
+            <select id="postTag" class="tag-select">
+              <option value="Хобби">🎨 Хобби</option>
+              <option value="Учёба">📚 Учёба</option>
+              <option value="Игры">⚽ Игры</option>
+              <option value="Жизнь">⚡ Жизнь</option>
+            </select>
+          </div>
           <textarea
             id="postText"
             placeholder="Текст вашей записи..."

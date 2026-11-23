@@ -39,12 +39,6 @@ h1 {
   color: #0f172a;
 }
 
-body:not(.admin) .post-form,
-body:not(.admin) .edit-btn,
-body:not(.admin) .delete-btn {
-  display: none;
-}
-
 .post-form {
   background: #1e293b;
   padding: 20px;
@@ -291,125 +285,6 @@ body:not(.admin) .delete-btn {
   color: #dc2626;
   font-size: 14px;
   margin: 0;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-  box-sizing: border-box;
-}
-
-.modal-content {
-  background-color: #fff;
-  color: #333;
-  padding: 25px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 360px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content input,
-.modal-content button {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-.modal-content button {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.modal-content .secondary-btn {
-  background-color: #4b5563;
-}
-.modal-content .google-btn {
-  background-color: #db4437;
-}
-
-.close {
-  position: absolute;
-  right: 18px;
-  top: 12px;
-  font-size: 28px;
-  cursor: pointer;
-  color: #888;
-}
-
-#auth-error {
-  color: #dc2626;
-  font-size: 14px;
-  margin: 0;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-  box-sizing: border-box;
-}
-
-.modal-content {
-  background-color: #fff;
-  color: #333;
-  padding: 25px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 360px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content input,
-.modal-content button {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-.modal-content button {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.modal-content .secondary-btn {
-  background-color: #4b5563;
-}
-.modal-content .google-btn {
-  background-color: #db4437;
 }
 
 .close {
@@ -696,4 +571,147 @@ body:not(.admin) .delete-btn {
   opacity: 0.6;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+/* Выравниваем саму панель администратора */
+#adminPanel.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 650px;
+}
+
+/* Делаем поля ввода на всю ширину этой аккуратной колонки */
+#postTitle,
+#postTag,
+#postText {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+#postText {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Делаем кнопку "Опубликовать" меньше, ровнее и без подсветки */
+#publishBtn {
+  width: auto;
+  align-self: flex-start; /* выравниваем по левому краю */
+  padding: 8px 18px; /* компактный размер */
+  font-size: 14px;
+  font-weight: 500;
+  color: #e2e8f0;
+  background: #232d33; /* спокойный тёмный фон без яркой заливки */
+  border: 1px solid #3c4d56; /* тонкая аккуратная рамка */
+  border-radius: 6px;
+  box-shadow: none; /* полностью убираем свечение */
+  text-shadow: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+/* Лёгкая реакция только при наведении мышки */
+#publishBtn:hover {
+  background: #2e3b42;
+  border-color: #526874;
+  box-shadow: none;
+}
+
+/* Выравниваем саму панель администратора */
+#adminPanel.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 650px;
+}
+
+/* Делаем поля ввода на всю ширину этой аккуратной колонки */
+#postTitle,
+#postTag,
+#postText {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+#postText {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Делаем кнопку "Опубликовать" меньше, ровнее и без подсветки */
+#publishBtn {
+  width: auto;
+  align-self: flex-start; /* выравниваем по левому краю */
+  padding: 8px 18px; /* компактный размер */
+  font-size: 14px;
+  font-weight: 500;
+  color: #e2e8f0;
+  background: #232d33; /* спокойный тёмный фон без яркой заливки */
+  border: 1px solid #3c4d56; /* тонкая аккуратная рамка */
+  border-radius: 6px;
+  box-shadow: none; /* полностью убираем свечение */
+  text-shadow: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+/* Лёгкая реакция только при наведении мышки */
+#publishBtn:hover {
+  background: #2e3b42;
+  border-color: #526874;
+  box-shadow: none;
+}
+
+.form-top-row {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 12px;
+  width: 100%;
+}
+
+.form-top-row #postTitle {
+  flex: 1 !important;
+  width: auto !important;
+}
+
+.form-top-row #postTag {
+  width: auto !important;
+  min-width: 150px;
+}
+
+.card-actions {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.edit-btn,
+.delete-btn {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #3c4d56;
+  background: #232d33;
+  color: #e2e8f0;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  border-color: #4fd1c5;
+}
+
+.delete-btn:hover {
+  border-color: #ef4444;
+  color: #fca5a5;
 }
