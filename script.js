@@ -173,7 +173,7 @@ publishBtn.addEventListener("click", async () => {
       });
 
       editingPostId = null;
-      formHeading.textContent = "Панель администратора: Новый пост";
+      formHeading.textContent = "Новый запись";
     } else {
       await addDoc(postsCollection, {
         title: title,

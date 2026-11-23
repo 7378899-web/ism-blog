@@ -880,3 +880,47 @@ h1 {
   color: #ffffff !important;
   border: 1px solid #2e7d54 !important;
 }
+
+@media (max-width: 600px) {
+  /* 1. Шапка */
+  .header-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-bar h1 {
+    font-size: 1.4rem;
+    white-space: nowrap;
+  }
+
+  .main-nav {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* 2. Форма: ставим «Хобби» строкой ВЫШЕ заголовка */
+  .form-top-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .tag-select,
+  #postTag,
+  #postTitle {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .tag-select {
+    order: -1 !important;
+  }
+}
