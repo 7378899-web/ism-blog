@@ -159,24 +159,34 @@
           </button>
         </div>
 
-        <input
-          type="text"
-          id="reg-name"
-          class="hidden"
-          placeholder="Ваше имя"
-        />
-        <input type="email" id="auth-email" placeholder="Email" required />
-        <input
-          type="password"
-          id="auth-password"
-          placeholder="Пароль (от 6 символов)"
-          required
-        />
+        <form onsubmit="return false;">
+          <input
+            type="text"
+            id="reg-name"
+            class="hidden"
+            placeholder="Ваше имя"
+            autocomplete="name"
+          />
+          <input
+            type="email"
+            id="auth-email"
+            placeholder="Email"
+            autocomplete="email"
+            required
+          />
+          <input
+            type="password"
+            id="auth-password"
+            placeholder="Пароль (от 6 символов)"
+            autocomplete="current-password"
+            required
+          />
 
-        <button type="button" id="email-login-btn">Войти</button>
-        <button type="button" id="email-reg-btn" class="hidden">
-          Создать аккаунт
-        </button>
+          <button type="button" id="email-login-btn">Войти</button>
+          <button type="button" id="email-reg-btn" class="hidden">
+            Создать аккаунт
+          </button>
+        </form>
 
         <div class="auth-divider"><span>или</span></div>
 
