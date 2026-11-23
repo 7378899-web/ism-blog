@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Блог Игоря</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-bar">
+        <h1>Мой блог</h1>
+
+        <nav class="main-nav">
+          <button type="button" class="nav-btn active" data-tab="blog">
+            Блог
+          </button>
+          <button type="button" class="nav-btn" data-tab="portfolio">
+            Портфолио
+          </button>
+          <button type="button" class="nav-btn" data-tab="chat">Чат</button>
+        </nav>
+
+        <div id="user-panel">
+          <button type="button" class="mode-btn" id="open-modal-btn">
+            Войти
+          </button>
+
+          <div
+            id="user-info"
+            style="display: none; align-items: center; gap: 10px"
+          >
+            <img
+              id="user-avatar"
+              src=""
+              alt="Аватар"
+              style="
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                object-fit: cover;
+              "
+            />
+            <span id="user-name"></span>
+            <button type="button" class="mode-btn" id="logout-btn">
+              Выйти
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ВКЛАДКА 1: БЛОГ -->
+      <div id="tab-blog" class="tab-content">
+        <section class="post-form" id="adminPanel" style="display: none">
+          <h2 id="formHeading">Панель администратора: добавить запись</h2>
+          <input type="text" id="postTitle" placeholder="Заголовок записи" />
+          <select id="postTag" class="tag-select">
+            <option value="Хобби">🎨 Хобби</option>
+            <option value="Учёба">📚 Учёба</option>
+            <option value="Игры">🎮 Игры</option>
+            <option value="Жизнь">⚡ Жизнь</option>
+          </select>
+          <textarea
+            id="postText"
+            placeholder="Текст вашей записи..."
+          ></textarea>
+          <button type="button" id="publishBtn">Опубликовать</button>
+        </section>
+
+        <h2>Записи в блоге</h2>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Поиск по заголовку или тексту..."
+        />
+        <div class="tags-filter" id="tagsFilter">
+          <button type="button" class="filter-btn active" data-tag="Все">
+            Все
+          </button>
+          <button type="button" class="filter-btn" data-tag="Хобби">
+            🎨 Хобби
+          </button>
+          <button type="button" class="filter-btn" data-tag="Учёба">
+            📚 Учёба
+          </button>
+          <button type="button" class="filter-btn" data-tag="Игры">
+            🎮 Игры
+          </button>
+          <button type="button" class="filter-btn" data-tag="Жизнь">
+            ⚡ Жизнь
+          </button>
+        </div>
+
+        <main class="blog-posts" id="feedContainer"></main>
+      </div>
+
+      <!-- ВКЛАДКА 2: ПОРТФОЛИО -->
+      <div id="tab-portfolio" class="tab-content" style="display: none">
+        <section class="post-form" id="portfolio-form" style="display: none">
+          <h2>Добавить проект в портфолио</h2>
+          <input type="text" id="proj-title" placeholder="Название проекта" />
+          <input
+            type="text"
+            id="proj-img"
+            placeholder="Ссылка на картинку (необязательно)"
+          />
+          <input type="file" id="proj-file" accept="image/*" />
+          <input
+            type="text"
+            id="proj-link"
+            placeholder="Ссылка на проект (GitHub / сайт)"
+          />
+          <textarea id="proj-desc" placeholder="Описание проекта..."></textarea>
+          <button type="button" id="add-proj-btn">Добавить проект</button>
+        </section>
+
+        <h2>Моё портфолио</h2>
+        <div class="portfolio-grid" id="portfolio-grid"></div>
+      </div>
+
+      <!-- ВКЛАДКА 3: ЖИВОЙ ЧАТ -->
+      <div id="tab-chat" class="tab-content" style="display: none">
+        <h2>Общий чат</h2>
+
+        <div class="chat-box">
+          <div id="chat-messages" class="chat-messages"></div>
+
+          <p id="chat-login-hint" class="chat-login-hint">
+            Войдите в аккаунт, чтобы отправлять сообщения в чат.
+          </p>
+
+          <div id="chat-form" class="chat-form" style="display: none">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="Напишите сообщение..."
+            />
+            <button type="button" id="send-chat-btn">Отправить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ВХОДА / РЕГИСТРАЦИИ -->
+    <div id="auth-modal" class="modal">
+      <div class="modal-content">
+        <span id="close-modal-btn" class="close">&times;</span>
+        <h3>Вход / Регистрация</h3>
+
+        <input
+          type="text"
+          id="reg-name"
+          placeholder="Ваше имя (для регистрации)"
+        />
+        <input type="email" id="auth-email" placeholder="Email" required />
+        <input
+          type="password"
+          id="auth-password"
+          placeholder="Пароль (от 6 символов)"
+          required
+        />
+
+        <button type="button" id="email-login-btn">Войти</button>
+        <button type="button" id="email-reg-btn" class="secondary-btn">
+          Создать аккаунт
+        </button>
+        <hr />
+        <button type="button" id="google-login-btn" class="google-btn">
+          Войти через Google
+        </button>
+        <p id="auth-error"></p>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
